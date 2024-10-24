@@ -51,7 +51,7 @@ public class test {
         List<Task> createTasks = new ArrayList<>();
         createTasks.add(new Task(1, 6, Arrays.asList(2,3)));
         createTasks.add(new Task(2, 5, Arrays.asList(4)));
-        createTasks.add(new Task(3, 1, Arrays.asList(5)));
+        createTasks.add(new Task(3, 11, Arrays.asList(5)));
         createTasks.add(new Task(4, 4, Arrays.asList(5)));
         createTasks.add(new Task(5, 8, null));
         Scheduler crerateScheduler = new Scheduler();
