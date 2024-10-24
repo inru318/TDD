@@ -58,4 +58,19 @@ public class test {
         crerateScheduler.addTask(createTasks);
         assertEquals(25, crerateScheduler.calCostTime());
     }
+
+    @Test
+    public void specialTaskCase() throws Exception {
+        List<Task> createTasks = new ArrayList<>();
+        createTasks.add(new Task(1, 2, Arrays.asList(2,3)));
+        createTasks.add(new Task(2, 3, Arrays.asList(4)));
+        createTasks.add(new Task(3, 6, Arrays.asList(5)));
+        createTasks.add(new Task(4, 11, Arrays.asList(6,7)));
+        createTasks.add(new Task(5, 9, Arrays.asList(7)));
+        createTasks.add(new Task(6, 10, null));
+        createTasks.add(new Task(7, 7, null));
+        Scheduler crerateScheduler = new Scheduler();
+        crerateScheduler.addTask(createTasks);
+        assertEquals(26, crerateScheduler.calCostTime());
+    }
 }
