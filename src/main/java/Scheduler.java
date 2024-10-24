@@ -11,8 +11,8 @@ public class Scheduler {
         this.roads = new ArrayList<>();
     }
 
-    public void addTask(Task task) {
-        tasks.add(task);
+    public void addTask(List<Task> taskList) {
+        tasks.addAll(taskList);
     }
 
     public int calCostTime(){
