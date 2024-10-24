@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.junit.Test;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.fail;
 
 public class test {
     @Test
@@ -72,5 +73,19 @@ public class test {
         Scheduler crerateScheduler = new Scheduler();
         crerateScheduler.addTask(createTasks);
         assertEquals(26, crerateScheduler.calCostTime());
+    }
+
+    //非法情境
+    @Test
+    public void illegalTaskCase() throws Exception {
+        try {
+            List<Task> createTasks = new ArrayList<>();
+            createTasks.add(new Task(1,2, Arrays.asList(2))); // 循環
+            createTasks.add(new Task(2,3, Arrays.asList(3)));
+            createTasks.add(new Task(3,4, Arrays.asList(1)));
+            fail("Exception should have been thrown");
+        }catch (Exception e) {
+            assertEquals("Should be directed Acyclic Graph", e.getMessage());
+        }
     }
 }
