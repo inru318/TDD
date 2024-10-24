@@ -9,4 +9,12 @@ public class test {
         assertEquals(5,createTask.getTime());
         assertEquals(Arrays.asList(2, 3),createTask.getDependencies());
     }
+
+    @Test
+    public void singleTaskCase() throws Exception{
+        Task createTask = new Task(1, 5, null);
+        Scheduler crerateScheduler = new Scheduler();
+        crerateScheduler.addTask(createTask);
+        assertEquals(5,crerateScheduler.calCostTime());
+    }
 }
