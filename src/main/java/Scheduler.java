@@ -25,12 +25,13 @@ public class Scheduler {
                     roads.set(roadIndex, roads.get(roadIndex) + tasks.get(nowIndex).getTime());
                     for(Integer dependence : tasks.get(nowIndex).getDependencies()) {
                         forks.add(dependence);
+                        int index = tasks.get(nowIndex).getDependencies().indexOf(dependence);
                         // 有 fork 時要備份 fork 前總計的時間
-                        if(dependence != tasks.get(nowIndex).getDependencies().size()-1) {
+                        if(index != tasks.get(nowIndex).getDependencies().size()-1) {
                             roads.add(roads.get(roadIndex));
                         }
                     }
-                    nowIndex = forks.remove(forks.size()-1);
+                    nowIndex = forks.remove(forks.size()-1)-1;
                 }
                 else if (tasks.get(nowIndex).getDependencies().size() == 1) {
                     int totalTime = tasks.get(nowIndex).getTime();
@@ -41,7 +42,7 @@ public class Scheduler {
             else {
                 roads.set(roadIndex, roads.get(roadIndex) + tasks.get(nowIndex).getTime());
                 if(!forks.isEmpty()){
-                    nowIndex = forks.remove(forks.size()-1);
+                    nowIndex = forks.remove(forks.size()-1)-1;
                     roadIndex++;
                 }
                 else{
