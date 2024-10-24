@@ -33,4 +33,16 @@ public class test {
         crerateScheduler.addTask(createTasks);
         assertEquals(9,crerateScheduler.calCostTime());
     }
+
+    @Test
+    public void straightLineTaskCase() throws Exception {
+        List<Task> createTasks = new ArrayList<>();
+        createTasks.add(new Task(1, 5, Arrays.asList(2)));
+        createTasks.add(new Task(2, 9, Arrays.asList(3)));
+        createTasks.add(new Task(3, 1, Arrays.asList(4)));
+        createTasks.add(new Task(4, 7, null));
+        Scheduler crerateScheduler = new Scheduler();
+        crerateScheduler.addTask(createTasks);
+        assertEquals(22, crerateScheduler.calCostTime());
+    }
 }
