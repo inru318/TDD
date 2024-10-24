@@ -4,12 +4,9 @@ import java.util.Collections;
 
 public class Scheduler {
     private List<Task> tasks;
-    private List<Integer> roads;
 
     public Scheduler() {
         this.tasks = new ArrayList<>();
-        this.roads = new ArrayList<>();
-        roads.add(0);
     }
 
     public void addTask(List<Task> taskList) {
@@ -17,9 +14,11 @@ public class Scheduler {
     }
 
     public int calCostTime(){
+        ArrayList<Integer> forks = new ArrayList<>();
+        ArrayList<Integer> roads = new ArrayList<>();
         int nowIndex = 0;
         int roadIndex = 0;
-        ArrayList<Integer> forks = new ArrayList<>();
+        roads.add(0);
         while(true) {
             if(tasks.get(nowIndex).getDependencies() != null) {
                 if(tasks.get(nowIndex).getDependencies().size() > 1) {
