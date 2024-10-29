@@ -33,7 +33,7 @@ public class Scheduler {
                     }
                     nowIndex = forks.remove(forks.size()-1)-1;
                 }
-                else if (tasks.get(nowIndex).getDependencies().size() == 1) {
+                else {
                     int totalTime = tasks.get(nowIndex).getTime();
                     roads.set(roadIndex, roads.get(roadIndex) + totalTime);
                     nowIndex = tasks.get(nowIndex).getDependencies().getFirst() - 1;
